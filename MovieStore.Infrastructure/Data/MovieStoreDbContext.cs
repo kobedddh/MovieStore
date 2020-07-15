@@ -135,7 +135,6 @@ namespace MovieStore.Infrastructure.Data
             modelBuilder.HasKey(mg => new { mg.MovieId, mg.GenreId });
             modelBuilder.HasOne(mg => mg.Movie).WithMany(g => g.MovieGenres).HasForeignKey(mg => mg.MovieId);
             modelBuilder.HasOne(mg => mg.Genre).WithMany(g => g.MovieGenres).HasForeignKey(mg => mg.GenreId);
-            
         }
 
         private void ConfigureTrailer(EntityTypeBuilder<Trailer> modelBuilder)
