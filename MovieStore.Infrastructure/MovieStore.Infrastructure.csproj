@@ -16,8 +16,8 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Configurations\" />
-    <Folder Include="Services\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
