@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+//add this when we use Async
+using System.Threading.Tasks;
 
 namespace MoviesStore.Core.RepositoryInterfaces
 {
-    //by default Interface is public, and cannot use access modifer
-    interface IAsyncRepository<T> where T:class
+    //interface can be public or internal
+    public interface IAsyncRepository<T> where T:class
     {
+        //by default Interface method is public, and cannot use access modifer
         //base interface with all our CRUD operations
-        T GetById(int id);
-        IEnumerable<T> ListAll();
-        IEnumerable<T> ListWhere(Expression<Func<T, bool>> filter);
-        int GetCount(Expression<Func<T, bool>> filter = null);
-        bool GetExists(Expression<Func<T, bool>> filter = null);
-        T Add(T entity);
-        T Update(T entity);
-        void Delete(T entity);
+        Task<T> GetByIdAsync(int id);
+        Task<IEnumerable<T>> ListAllAsync();
+        //07/16 note
+        //the parameter needs to be Expression<TDelegate> because it deals with out memory source, so Where() points to IQueryable
+        Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> filter);
+        //optional parameter
+        Task<int> GetCountAsync(Expression<Func<T, bool>> filter = null);
+        Task<bool> GetExistsAsync(Expression<Func<T, bool>> filter = null);
+        Task<T> AddAsync(T entity);
+        Task<T> UpdateAsync(T entity);
+        Task DeleteAsync(T entity);
+
     }
 }

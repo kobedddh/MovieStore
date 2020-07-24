@@ -34,6 +34,9 @@ namespace MoviesStore.Core.Entities
 
         //One Movie can have multiple trailers
         public ICollection<Trailer> Trailer { get; set; }
+
+        //额外添加
+        public ICollection<Purchase> Purchases { get; set; }
     }
 
     

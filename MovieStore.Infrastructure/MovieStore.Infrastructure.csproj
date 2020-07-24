@@ -16,11 +16,10 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Configurations\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
@@ -35,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MoviesStore.Core\MoviesStore.Core.csproj" />
     <ProjectReference Include="..\MoviesStore.Core\MoviesStore.Core.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 //add this
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using MoviesStore.Core.Entities;
 
 namespace MovieStore.Infrastructure.Data
 {
+    //07/13
     //Install all the EF Core libraries using Nuget package Manager
     //Create a class that inherits from DbContext Class
     //DbContext represents your Database
@@ -43,7 +45,7 @@ namespace MovieStore.Infrastructure.Data
         public MovieStoreDbContext(DbContextOptions<MovieStoreDbContext> options) : base(options)
         {
         }
-        public DbSet<Genre> Genre { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
         public DbSet<MovieGenre> MovieGenres { get; set; }
@@ -166,5 +168,29 @@ namespace MovieStore.Infrastructure.Data
             modelBuilder.Ignore(m => m.Rating);
 
         }
+
+        //07/15
+        /* 
+      IEnumerable<T> VS IQueryable<T>      
+       -all collection (like regular Lists,Dictionaries,..) implements IEnumerable, so LINQ methos will point to IEnumerable extension
+	  (which work with in-memory source);
+       -Entities (like DbSets,database,SQL server) normally implement IQuerable, they point to IQuerable methods 
+	  (which usually work with out-memory source)
+
+      In LINQ, WHERE() method is extended by both IEnumerable and IQueryable; one of the extension method will be used depends on the source
+         */
+        /*public void Test()
+        {
+            //in memory source
+            var ll = new List<int>();
+            //Where() extension method points to IEnumerable
+            //parameter is Func<TSource, bool> predicate
+            ll.Where(x => x > 3);
+            //out memory source
+            //Where() extension method points to IQueryable
+            //parameter is Expression<Func<TSource, bool>> predicate
+            Genres.Where(global => global.Id == 2);
+        }
+        */
     }
 }
