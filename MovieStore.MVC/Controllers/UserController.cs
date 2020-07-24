@@ -165,6 +165,14 @@ namespace MovieStore.MVC.Controllers
             return LocalRedirect("~/");
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route("User/{userId}/movie/{movieId}/favorite")]
+        public async Task<bool> CheckFavorite(int userId,int movieId)
+        {
+            return await _userService.CheckFavorited(userId, movieId);
+        }
+
 
 
     }

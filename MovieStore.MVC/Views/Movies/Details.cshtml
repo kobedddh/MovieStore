@@ -19,14 +19,14 @@
             @if (Model.CheckFavorited)
             {
                 <form method="post" asp-action="DeleteFavorite" asp-controller="User">
-                    <button type="submit"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                    <button type="submit"><i class="fa fa-heart" aria-hidden="true"></i></button>
                     <input type="hidden" value="@Model.Movie.Id" name="MovieId" />
                 </form>
             }
             else
             {
                 <form method="post" asp-action="Favorite" asp-controller="User">
-                    <button type="submit"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                    <button type="submit"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
                     <input type="hidden" value="@Model.Movie.Id" name="MovieId" />
                 </form>
             }
@@ -66,14 +66,14 @@
         </div>
     </div>
 </div>
-<div>
-    <div class="float-left w-25 bg-light h-100">
+<div class="bg-light clearfix">
+    <div class="float-left w-25 pt-3 pl-3" style="background-color:#dcdcdc;height:15rem">
         <h4 class="sm">MOVIE FACTS</h4>
         <ul class="list-unstyled">
-            <li>Release Date <span class="bg-dark rounded text-white">@Model.Movie.ReleaseDate.Value.ToString("MM dd yyyy")</span></li>
-            <li>Run time <span class="bg-dark rounded text-white">@Model.Movie.RunTime</span></li>
-            <li>Box Office <span class="bg-dark rounded text-white">@Model.Movie.Revenue</span></li>
-            <li>Budget <span class="bg-dark rounded text-white">@Model.Movie.Budget</span></li>
+            <li>Release Date <span class="bg-dark rounded text-white">&nbsp;@Model.Movie.ReleaseDate.Value.ToString("MM dd yyyy")&nbsp;</span></li>
+            <li>Run time <span class="bg-dark rounded text-white">&nbsp;@Model.Movie.RunTime&nbsp;</span></li>
+            <li>Box Office <span class="bg-dark rounded text-white">&nbsp;@Model.Movie.Revenue&nbsp;</span></li>
+            <li>Budget <span class="bg-dark rounded text-white">&nbsp;@Model.Movie.Budget&nbsp;</span></li>
         </ul>
         <button style="border-style:none"><i class="fa fa-window-maximize" aria-hidden="true"></i></button>
         <button style="border-style:none"><i class="fa fa-share-square-o" aria-hidden="true"></i></button>
